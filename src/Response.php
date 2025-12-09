@@ -102,13 +102,11 @@ class Response
         return isset($this->data['returnUrl']) ? $this->data['returnUrl'] : null;
     }
 
-    // amount details (returns the whole amountDetails array)
     public function amountDetails()
     {
         return $this->amountDetails;
     }
 
-    // convenience getters for common amount fields
     public function amount()
     {
         return isset($this->amountDetails['amount']) ? $this->amountDetails['amount'] : null;

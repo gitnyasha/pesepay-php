@@ -96,7 +96,7 @@ class Pesepay
         return new Response($referenceNumber, $pollUrl, $redirectUrl, $jsonDecoded);
     }
 
-    public function makeSeamlessPayment($payment, $reasonForPayment, $amount, $requiredFields = null)
+    public function makeSeamlessPayment($payment, $reasonForPayment, $amount, $requiredFields = null, $merchantReference = null)
     {
         if ($this->resultUrl == null)
             throw new \InvalidArgumentException('Result url has not beeen specified.');
@@ -105,6 +105,7 @@ class Pesepay
         $payment->returnUrl = $this->returnUrl;
         $payment->reasonForPayment = $reasonForPayment;
         $payment->amountDetails = new Amount($amount, $payment->currencyCode);
+        $payment->merchantReference = $merchantReference;
 
         $payment->setRequiredFields($requiredFields);
 
